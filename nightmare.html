@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLD FNTD OFFICIAL VALUE LIST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            text-align: center;
+        }
+
+        /* Хедер */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #0a0a0a;
+            border-bottom: 2px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .site-title {
+            font-size: 11px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 10px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Баннер */
+        .hero-banner {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #000), 
+                        url('https://via.placeholder.com/1200x300/220000/ffffff?text=OLD+FNTD+NIGHTMARE') center/cover no-repeat;
+            border-bottom: 3px solid #8b0000;
+        }
+
+        /* Контейнер страницы */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .category-header-title {
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px #550000;
+        }
+
+        /* Поле поиска */
+        .search-container {
+            margin-bottom: 35px;
+        }
+
+        .search-input {
+            background-color: #0a0a0a;
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 12px 20px;
+            color: #888;
+            font-family: inherit;
+            font-size: 10px;
+            width: 100%;
+            max-width: 400px;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #ff0055;
+            color: #fff;
+        }
+
+        /* Сетка карточек */
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-bottom: 30px;
+        }
+
+        /* Стиль карточки */
+        .unit-card {
+            background-color: #000;
+            border-radius: 12px;
+            padding: 16px;
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            position: relative;
+            border: 2px solid #ff0055;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+            text-align: left;
+        }
+
+        /* Градиентные / Радужные рамки */
+        @keyframes rainbowGlow {
+            0% { border-color: #ff007f; box-shadow: 0 0 12px rgba(255, 0, 127, 0.4); }
+            33% { border-color: #00e5ff; box-shadow: 0 0 12px rgba(0, 229, 255, 0.4); }
+            66% { border-color: #00ff66; box-shadow: 0 0 12px rgba(0, 255, 102, 0.4); }
+            100% { border-color: #ff007f; box-shadow: 0 0 12px rgba(255, 0, 127, 0.4); }
+        }
+
+        .unit-card.shiny {
+            animation: rainbowGlow 6s infinite linear;
+        }
+
+        /* Верхняя часть */
+        .unit-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .unit-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ff0055;
+            flex-shrink: 0;
+        }
+
+        .unit-card.shiny .unit-img {
+            border-color: #00e5ff;
+            box-shadow: 0 0 8px #00e5ff;
+        }
+
+        .unit-name {
+            font-size: 11px;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        /* Разделительная полоса */
+        .unit-card::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, #ff007f, #00e5ff);
+            margin: 4px 0 12px 0;
+            border-radius: 2px;
+        }
+
+        /* Цвета названий */
+        .name-shiny-purple { 
+            background: linear-gradient(90deg, #ff007f, #00e5ff, #00ff66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .name-purple { color: #ff77ff; }
+        .name-shiny-red { 
+            background: linear-gradient(90deg, #ff3300, #ffff00, #00e5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .name-red { color: #ff5555; }
+
+        /* Статистика */
+        .unit-stats {
+            width: 100%;
+            font-size: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 10px;
+        }
+
+        .stat-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            color: #777;
+            text-transform: uppercase;
+            font-size: 7px;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            color: #00ff66;
+            font-size: 9px;
+        }
+
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .page-btn {
+            background-color: #111;
+            border: 1px solid #333;
+            color: #555;
+            padding: 8px 16px;
+            font-family: inherit;
+            font-size: 9px;
+            border-radius: 4px;
+            cursor: not-allowed;
+        }
+
+        .page-info {
+            font-size: 9px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/32" alt="Logo" class="logo-img">
+            <span class="site-title">OLD FNTD OFFICIAL VALUE L...</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#index.html">Home</a></li>
+                <li><a href="#nightmare.html" class="active">Nightmare</a></li>
+                <li><a href="#secret.html">Secret</a></li>
+                <li><a href="#items">Items</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-banner"></div>
+
+    <div class="main-container">
+        <h1 class="category-header-title">Nightmare</h1>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search units..." onkeyup="searchUnits()">
+        </div>
+
+        <div class="units-grid" id="unitsGrid">
+            
+            <!-- Shiny Leviathan Mangle -->
+            <div class="unit-card shiny" data-name="shiny leviathan mangle">
+                <div class="unit-card-header">
+                    <img src="https://cdn.imageurlgenerator.com/uploads/735aecf1-c0dd-40cb-a2a2-35831c4534d2.webp" class="unit-img">
+                    <div class="unit-name name-shiny-purple">Shiny<br>Leviathan Mangle</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">O/C</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">9.5/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #00ff0d;">Slowly Rising</span></div>
+                </div>
+            </div>
+
+            <!-- Leviathan Mangle -->
+            <div class="unit-card" data-name="leviathan mangle">
+                <div class="unit-card-header">
+                    <img src="https://image2url.com/r2/default/images/1773509680911-82fd61e9-27b8-4fff-a38e-e7c67eca6479.webp" class="unit-img">
+                    <div class="unit-name name-purple">Leviathan<br>Mangle</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">5K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">6/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #ffaa00;">Unstable</span></div>
+                </div>
+            </div>
+
+            <!-- Shiny Shadow Bonnie -->
+            <div class="unit-card shiny" data-name="shiny ravenous purple guy">
+                <div class="unit-card-header">
+                    <img src="https://videotourl.com/images/1787826044786-06820082-1aa2-427d-8da4-863493e01a41.png" class="unit-img">
+                    <div class="unit-name name-shiny-purple">Shiny<br>Shadow Bonnie</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">22K-20K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">5.5/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #0099ff;">Stable</span></div>
+                </div>
+            </div>
+
+            <!-- Shadow Bonnie -->
+            <div class="unit-card" data-name="ravenous purple guy">
+                <div class="unit-card-header">
+                    <img src="https://videotourl.com/images/1787655696994-b6efe908-2736-4164-b08f-7803bae4924c.png" class="unit-img">
+                    <div class="unit-name name-purple">Shadow<br>Bonnie</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">1.3K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">6/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #ffaa00;">Unstable</span></div>
+                </div>
+            </div>
+
+            <!-- Shiny Blighted Endo Freddy -->
+            <div class="unit-card shiny" data-name="shiny old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://cdn.imageurlgenerator.com/uploads/1570684a-b836-4347-8c29-0eead0c4442b.webp" class="unit-img">
+                    <div class="unit-name name-shiny-red">Shiny Blighted Endo<br>Freddy</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">O/C</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">10/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #0099ff;">Stable</span></div>
+                </div>
+            </div>
+
+            <div class="unit-card" data-name="old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://cdn.imageurlgenerator.com/uploads/58496cea-f2b3-45e4-95fd-aedc863388b1.webp" class="unit-img">
+                    <div class="unit-name name-red">Blighted Endo<br>Freddy</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">6.5K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">7/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #0099ff;">Stable</span></div>
+                </div>
+            </div>
+
+            <div class="unit-card shiny" data-name="shiny old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://imagetourl.cloud/tplucyhpkvgi.webp" class="unit-img">
+                    <div class="unit-name name-shiny-red">Shiny Marionette's<br>Puppeteer</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">8.5K-10K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">6/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #0099ff;">Stable</span></div>
+                </div>
+            </div>
+
+            <!-- Marionette's Puppeteer -->
+            <div class="unit-card" data-name="old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://imagetourl.cloud/vc733z3jgzig.webp" class="unit-img">
+                    <div class="unit-name name-red">Marionette's<br>Puppeteer</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">400</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">2/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #ff9102;">Unstable</span></div>
+                </div>
+            </div>
+
+             <div class="unit-card shiny" data-name="shiny old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://cdn.corenexis.com/f/8B90RmwsWOb.png" class="unit-img">
+                    <div class="unit-name name-shiny-red">Shiny Bukavac<br>Mangle</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">O/C</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">N/A</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #ffffff;">Stable</span></div>
+                </div>
+            </div>
+
+            <!-- Bukavac Mangle -->
+            <div class="unit-card" data-name="old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://cdn.corenexis.com/f/8B90RmwsWOb.png" class="unit-img">
+                    <div class="unit-name name-red">Bukavac<br>Mangle</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">10K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">7/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #00d9ff;">Stable</span></div>
+                </div>
+            </div>
+
+            <div class="unit-card shiny" data-name="shiny old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://cdn.corenexis.com/f/8B90RmwsWOb.png" class="unit-img">
+                    <div class="unit-name name-shiny-red">Shiny Phantom<br>Mangle</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">O/C</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">N/A</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #ffffff;">Stable</span></div>
+                </div>
+            </div>
+
+            <!-- Bukavac Mangle -->
+            <div class="unit-card" data-name="old man consequences">
+                <div class="unit-card-header">
+                    <img src="https://cdn.corenexis.com/f/8B90RmwsWOb.png" class="unit-img">
+                    <div class="unit-name name-red">Phantom<br>Mangle</div>
+                </div>
+                <div class="unit-stats">
+                    <div class="stat-row"><span class="stat-label">Value</span><span class="stat-value">7K</span></div>
+                    <div class="stat-row"><span class="stat-label">Demand</span><span class="stat-value">7/10</span></div>
+                    <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: #00d9ff;">Stable</span></div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn">Prev</button>
+            <span class="page-info">Page 1 of 1</span>
+            <button class="page-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        function searchUnits() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.unit-card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                if (name.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

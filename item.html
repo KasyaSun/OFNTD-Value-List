@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLD FNTD OFFICIAL VALUE LIST - Items</title>
+    <!-- Подключаем пиксельный шрифт Press Start 2P -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Press Start 2P', monospace;
+            padding: 20px 40px;
+            font-size: 12px;
+        }
+
+        /* Навигационная панель */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 25px;
+            font-size: 11px;
+        }
+
+        .logo {
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #00f3ff;
+        }
+
+        .nav-links a.active {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Заголовок страницы */
+        .page-title {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0 30px 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Поисковая строка */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            width: 450px;
+            background-color: #080808;
+            border: 2px solid #333333;
+            border-radius: 10px;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: #00f3ff;
+        }
+
+        .search-box::placeholder {
+            color: #666666;
+        }
+
+        /* Сетка карточек */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Карточка */
+        .card {
+            background-color: #000000;
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Голубой неон (Cyan) */
+        .border-cyan {
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 12px #00f3ff, inset 0 0 4px #00f3ff;
+        }
+
+        /* Розовый неон (Magenta) */
+        .border-pink {
+            border: 2px solid #ff0055;
+            box-shadow: 0 0 12px #ff0055, inset 0 0 4px #ff0055;
+        }
+
+        /* Шапка карточки */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Аватар с неоновой рамкой */
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 10px;
+            background-color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .border-cyan .avatar {
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 8px #00f3ff;
+        }
+
+        .border-pink .avatar {
+            border: 2px solid #ff0055;
+            box-shadow: 0 0 8px #ff0055;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Названия */
+        .title-cyan {
+            color: #00f3ff;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .title-pink {
+            color: #ff55aa;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .title-gold {
+            color: #ffcc00;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* Характеристики */
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stat-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            color: #777777;
+        }
+
+        .stat-value {
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .val-green { color: #00ff88; }
+        .val-cyan { color: #00f3ff; }
+        .val-white { color: #ffffff; }
+
+        /* Статус и линия-разделитель */
+        .status-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .status-value {
+            font-size: 11px;
+        }
+
+        .status-stable { color: #00f3ff; }
+        .status-unstable { color: #ff9900; }
+        .status-rising { color: #00ff88; }
+
+        .divider {
+            height: 2px;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .border-cyan .divider {
+            background-color: #00f3ff;
+            box-shadow: 0 0 6px #00f3ff;
+        }
+
+        .border-pink .divider {
+            background-color: #ff0055;
+            box-shadow: 0 0 6px #ff0055;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <div class="navbar">
+        <div class="logo">OLD FNTD OFFICIAL VALUE L...</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Nightmare</a>
+            <a href="#">Secret</a>
+            <a href="#">Other</a>
+            <a href="#" class="active">Items</a>
+        </div>
+    </div>
+
+    <!-- Заголовок страницы -->
+    <h1 class="page-title">Items</h1>
+
+    <!-- Поиск -->
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Search units...">
+    </div>
+
+    <!-- Карточки (3 колонки) -->
+    <div class="grid-container">
+
+        <!-- 1. Premium Pass -->
+        <div class="card border-cyan">
+            <div class="card-header">
+                <div class="avatar"><img src="https://cdn.corenexis.com/f/sgvvrKQ5u5w.png" alt="Premium Pass"></div>
+                <div class="title-gold"><br>Premium Pass</div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-group">
+                    <span class="stat-label">VALUE</span>
+                    <span class="stat-value val-cyan">1.5K-1K</span>
+                </div>
+                <div class="stat-group">
+                    <span class="stat-label">DEMAND</span>
+                    <span class="stat-value val-green">8/10</span>
+                </div>
+            </div>
+            <div class="status-container">
+                <span class="stat-label">STATUS</span>
+                <span class="status-value status-stable">Stable</span>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- 2. VIP -->
+        <div class="card border-pink">
+            <div class="card-header">
+                <div class="avatar"><img src="https://cdn.corenexis.com/f/HYCa8ZrCKBF.png" alt="VIP"></div>
+                <div class="title-pink">VIP</div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-group">
+                    <span class="stat-label">VALUE</span>
+                    <span class="stat-value val-white">600-500</span>
+                </div>
+                <div class="stat-group">
+                    <span class="stat-label">DEMAND</span>
+                    <span class="stat-value val-green">7.5/10</span>
+                </div>
+            </div>
+            <div class="status-container">
+                <span class="stat-label">STATUS</span>
+                <span class="status-value status-stable">Stable</span>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- 3. x2 Speed -->
+        <div class="card border-cyan">
+            <div class="card-header">
+                <div class="avatar"><img src="https://cdn.corenexis.com/f/iaCSNx8hXfP.webp" alt="x2 Speed"></div>
+                <div class="title-cyan">x2 Speed</div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-group">
+                    <span class="stat-label">VALUE</span>
+                    <span class="stat-value val-cyan">N/A</span>
+                </div>
+                <div class="stat-group">
+                    <span class="stat-label">DEMAND</span>
+                    <span class="stat-value val-green">6/10</span>
+                </div>
+            </div>
+            <div class="status-container">
+                <span class="stat-label">STATUS</span>
+                <span class="status-value status-stable">Stable</span>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
